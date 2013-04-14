@@ -1,0 +1,183 @@
+\documentclass[12pt,oneside]{book}
+\usepackage{times}
+\usepackage{helvet}
+
+% \usepackage{charter}
+
+% \renewcommand{\ttdefault}{lmtt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[a4paper,twoside]{geometry}
+\geometry{%
+  verbose,tmargin=2.5cm,%
+  bmargin=2cm,%
+  lmargin=2.5cm,rmargin=2.5cm,%
+  includefoot,%Better
+  bindingoffset=1cm,%
+  headheight=1.1cm,headsep=0.5cm,%
+  footskip=0.8cm}
+\usepackage{fancyhdr}
+
+\setcounter{secnumdepth}{1}
+\setcounter{tocdepth}{2}
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{2em}
+\usepackage[spanish, french]{babel}
+\addto\extrasfrench{\providecommand{\og}%
+  {\leavevmode\flqq~}\providecommand{\fg}%
+  {\ifdim\lastskip>\z@\unskip\fi~\frqq}}
+
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage[unicode=true,%
+ bookmarks=true,%
+ breaklinks=false,%
+ pdfborder={0 0 0},%
+ colorlinks=false]{hyperref}
+
+\usepackage{bookmark}
+
+
+\hypersetup{pdftitle={Thèse de doctorat},
+ pdfauthor={Jeanne Drouet},
+ pdfsubject={},
+ pdfkeywords={},
+ backref=true}
+ 
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\newcommand{\noun}[1]{\textsc{#1}}
+%% Special footnote code from the package 'stblftnt.sty'
+%% Author : Robin Fairbairns -- Last revised Dec 13 1996
+\let\SF@@footnote\footnote
+\def\footnote{\ifx\protect\@typeset@protect
+    \expandafter\SF@@footnote
+  \else
+    \expandafter\SF@gobble@opt
+  \fi
+}
+\expandafter\def\csname SF@gobble@opt \endcsname{\@ifnextchar[%]
+  \SF@gobble@twobracket
+  \@gobble
+}
+\edef\SF@gobble@opt{\noexpand\protect
+  \expandafter\noexpand\csname SF@gobble@opt \endcsname}
+\def\SF@gobble@twobracket[#1]#2{}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[%
+citestyle=auteurannee_colon,%
+bibstyle=auteurannee,%
+natbib=true,%
+sorting=nyt,%
+alldates=long,%
+useprefix=true%
+]{biblatex}
+\bibliography{these_colombie}
+\setlength{\bibitemsep}{2ex}
+
+\usepackage{multicol}
+\usepackage{lscape}
+\usepackage{longtable}
+\newcommand{\vpageref}[1]{p.~\pageref{#1}}
+
+
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+
+
+% \contentsmargin{0em}
+% \dottedcontents{section}[1.5em]{}{2.3em}{1pc}
+% \dottedcontents{subsection}[3.8em]{}{3.2em}{1pc}
+
+\usepackage{titlesec}
+\usepackage{titletoc}
+
+
+\titlecontents{chapter}[0em]{\addvspace{1pc} }
+              {\contentsmargin{0pt}%
+              \bfseries \large \chaptertitlename%
+              \enspace \thecontentslabel .\enspace%
+              }{ \contentsmargin{0pt}%
+              \bfseries \large}%
+              {\titlerule*[0.32cm]{.} \contentspage }
+
+\titlecontents{part}[0em]{\addvspace{1pc}}
+              {\contentsmargin{0pt}%
+              \bfseries \Huge Partie  \thecontentslabel .\enspace%
+              }{ \contentsmargin{0pt}%
+              \bfseries \Huge}%
+              {\titlerule*[0.5cm]{.}\contentspage \quad}
+
+\titlecontents{subsection}[2.2cm]{}
+              {\normalfont}{\normalfont}%
+              {\titlerule*[0.32cm]{.}\contentspage \quad}
+
+
+\renewcommand*\thesection{\arabic{section}.}
+%\titlelabel{\thesection.\quad }
+\titleformat{\subsubsection}[hang]
+  {\normalfont\bfseries\itshape}{}{1em}{}
+\titleformat{\paragraph}[hang]
+  {\normalfont\itshape}{}{1em}{}
+\titlespacing{\paragraph}
+  {0em}{.5em}{.5em}
+\titleformat{\paragraph}[hang]
+  {\normalfont\itshape}{}{1em}{}
+\titlespacing{\paragraph}
+  {0em}{.5em}{.5em}
+
+\titleformat{\subparagraph}[block]%
+  {-- \normalfont { }}{1em}{1em}{}
+\titlespacing*{\subparagraph}%
+  {2em}{.5em}{.5em}
+
+\newcommand{\conclusion}{%
+  \vspace{2ex} \large{}%
+  \begin{center}
+    $\mathbf{\ast}$ \\
+    $\mathbf{\ast}\:$  \quad $\:\mathbf{\ast}$
+  \end{center}
+  \normalsize{}
+  \vspace{2ex} %
+}
+
+\makeatother
+\sloppy
+
+\DeclareLanguageMapping{french}{francais}
+\newcommand{\text}[1]{\\mbox{#1}}
+
+\usepackage{color}
+
+
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}}
+
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\include{Page_de_garde_tex}
+
+
+\chapter{Premier chapitre}
+
+Du texte\cite{drouet2012} \footnote{avec une note de bas de page}
+
+
+\pagestyle{fancy}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[CO,CE]{Bibliographie}
+\fancyhead[LO,RE]{}
+\addcontentsline{toc}{part}{Bibliographie}
+\printbibliography
+\end{document}
+

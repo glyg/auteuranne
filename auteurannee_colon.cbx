@@ -1,0 +1,74 @@
+%$Id: auteurannee.cbx,v 0.1 2011/11/17 guillaume $
+
+\ProvidesFile{auteurannee.cbx}
+[\abx@cbxid $Id: authoryear.cbx,v 0.1 2010/08/03 guillaume $ ]
+
+\RequireCitationStyle{authoryear-comp}
+
+%\renewcommand*{\nameyeardelim}{\addcolon\addspace}
+\renewcommand*{\postnotedelim}{\addcolon\addspace}
+
+\DeclareFieldFormat{postnote}{#1}
+
+
+
+\renewbibmacro*{cite}{%
+  \iffieldundef{shorthand}
+    {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+       {\usebibmacro{cite:label}%
+	\setunit{\addspace}%
+	\usebibmacro{cite:labelyear+extrayear}%
+        \usebibmacro{cite:reinit}}
+       {\iffieldequals{namehash}{\cbx@lasthash}
+          {\ifthenelse{\iffieldequals{labelyear}{\cbx@lastyear}\AND
+                       \(\value{multicitecount}=0\OR\iffieldundef{postnote}\)}
+             {\setunit{\addcomma\addspace}%
+              \usebibmacro{cite:labelyear+extrayear}}
+             {\setunit{\compcitedelim}%
+              \usebibmacro{cite:labelyear+extrayear}%
+              \savefield{labelyear}{\cbx@lastyear}}}
+          {\printnames{labelname}%
+  	   \setunit{\nameyeardelim}%
+           \usebibmacro{cite:labelyear+extrayear}%
+           \savefield{namehash}{\cbx@lasthash}%
+           \savefield{labelyear}{\cbx@lastyear}}}}
+    {\usebibmacro{cite:shorthand}%
+     \usebibmacro{cite:reinit}}%
+  \setunit{\multicitedelim}}
+
+
+\renewbibmacro*{citeyear}{%
+  \iffieldundef{shorthand}
+    {\iffieldundef{labelyear}
+       {\usebibmacro{cite:label}%
+        \usebibmacro{cite:reinit}}
+       {\iffieldequals{namehash}{\cbx@lasthash}
+          {\ifthenelse{\iffieldequals{labelyear}{\cbx@lastyear}\AND
+                       \(\value{multicitecount}=0\OR\iffieldundef{postnote}\)}
+             {\setunit{\addcomma\addspace}%
+              \usebibmacro{cite:labelyear+extrayear}}
+             {\setunit{\compcitedelim}%
+              \usebibmacro{cite:labelyear+extrayear}%
+              \savefield{labelyear}{\cbx@lastyear}}}
+          {\usebibmacro{cite:labelyear+extrayear}%
+           \savefield{namehash}{\cbx@lasthash}%
+           \savefield{labelyear}{\cbx@lastyear}}}}
+    {\usebibmacro{cite:shorthand}%
+     \usebibmacro{cite:reinit}}%
+  \setunit{\multicitedelim}}
+
+
+\renewbibmacro*{name:last}[4]{%
+  \ifuseprefix
+    {\usebibmacro{name:delim}{#3#1}%
+     \usebibmacro{name:hook}{#3#1}%
+     \ifblank{#3}
+       {}
+       {\ifcapital
+          {\mkbibnameprefix{\MakeCapital{#3}}\isdot}
+          {\mkbibnameprefix{#3}\isdot}%
+        \ifpunctmark{'}{}{\addhighpenspace}}}
+    {\usebibmacro{name:delim}{#1}%
+     \usebibmacro{name:hook}{#1}}%
+   {#1}}%
+\endinput

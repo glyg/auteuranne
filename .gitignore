@@ -1,0 +1,10 @@
+LATEX
+THESE_jeanne
+*.aux
+*.bbl
+*.blg
+*.log
+*.run.xml
+*.*~
+*.bcf
+*.pdf
