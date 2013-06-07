@@ -1,7 +1,7 @@
-% $Id: auteurannee.bbx,v 0.1 2010/11/17 $
+% $Id: auteurannee.bbx,v 0.3 2013/06/2013 $
 
 \ProvidesFile{auteurannee.bbx}
-[\abx@bbxid $Id: autheurannaee.bbx v 0.1 2013/04/11 guillaume $]
+[\abx@bbxid $Id: autheurannaee.bbx v guillaume $]
 
 \RequireBibliographyStyle{authoryear}
 \ExecuteBibliographyOptions{labelyear,sorting=nyt,pagetracker}
@@ -16,14 +16,14 @@
 
 \renewcommand*{\newunitpunct}{\addcomma\space}
 %\renewcommand*{\bibrangedash}{}
-%%%%% Filed, Name and Lists Formats
+
+%%%%% File, Name and Lists Formats
+
 \DeclareFieldFormat[inbook]{chapter}{\mkbibquote{#1\isdot}}
 \DeclareFieldFormat[inbook]{title}{\mkbibemph{#1}}
 \DeclareFieldFormat[thesis]{title}{\mkbibemph{#1}}
 \DeclareFieldFormat[unpublished]{title}{\mkbibemph{#1}}
 \DeclareFieldFormat[online]{title}{\mkbibquote{#1\isdot}}
-\DeclareFieldFormat[movie]{type}{\mkbibemph{#1}}
-
 %\DeclareFieldFormat{url}{\underline{\url{#1}}}
 \urlstyle{rm}
 %%%
@@ -223,14 +223,9 @@
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{title}%
   \newunit
-  %\printfield{duration}
-  \usebibmacro{duration}%
-  \newunit
   \printlist{language}%
   \newunit\newblock
   \printfield{note}%
-  \newunit\newblock
-  \printfield{type}%
   \newunit\newblock
   \usebibmacro{publisher+location+date}%
   \usebibmacro{finentry}%
@@ -264,8 +259,6 @@
   \usebibmacro{pageref}%
   \usebibmacro{finentry}}
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -290,15 +283,7 @@
       \printtext[parens]{dir.}
       \newunit}%
     \usebibmacro{byeditorx}}
-
-\DeclareFieldFormat{parens}{\mkbibparens{#1}}
-
-%
-\newbibmacro*{duration}{%
-  \iffieldundef{duration}{}
-  {\printtext[parens]{\printfield{duration}}}
-  \newunit}
-
+  
 \newbibmacro*{numero}{%
   \iffieldundef{number}{}
   {\printtext{\no}\printfield{number}}

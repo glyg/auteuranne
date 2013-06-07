@@ -1,7 +1,7 @@
 %$Id: auteurannee.cbx,v 0.1 2011/11/17 guillaume $
 
 \ProvidesFile{auteurannee.cbx}
-[\abx@cbxid $Id: authoryear.cbx,v 0.1 2010/08/03 guillaume $ ]
+[\abx@cbxid $Id: authoryear.cbx,v 0.3 2013/06/2013 guillaume $ ]
 
 \RequireCitationStyle{authoryear-comp}
 
@@ -9,8 +9,6 @@
 \renewcommand*{\postnotedelim}{\addcolon\addspace}
 
 \DeclareFieldFormat{postnote}{#1}
-
-
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
@@ -56,7 +54,6 @@
     {\usebibmacro{cite:shorthand}%
      \usebibmacro{cite:reinit}}%
   \setunit{\multicitedelim}}
-
 
 \renewbibmacro*{name:last}[4]{%
   \ifuseprefix
