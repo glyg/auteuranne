@@ -277,6 +277,12 @@
     {}%
     {\printfield{chapter}}}%
 %
+\newbibmacro*{duration}{%
+  \iffieldundef{duration}{}
+  {\printtext[parens]{\printfield{duration}}}
+  \newunit}
+
+
 \renewbibmacro*{byeditor}{%
     \ifnameundef{editor}
     {}
