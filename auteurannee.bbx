@@ -223,9 +223,14 @@
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{title}%
   \newunit
+  %\printfield{duration}
+  \usebibmacro{duration}%
+  \newunit
   \printlist{language}%
   \newunit\newblock
   \printfield{note}%
+  \newunit\newblock
+  \printfield{type}%
   \newunit\newblock
   \usebibmacro{publisher+location+date}%
   \usebibmacro{finentry}%
