@@ -24,6 +24,7 @@
 \DeclareFieldFormat[thesis]{title}{\mkbibemph{#1}}
 \DeclareFieldFormat[unpublished]{title}{\mkbibemph{#1}}
 \DeclareFieldFormat[online]{title}{\mkbibquote{#1\isdot}}
+\DeclareFieldFormat[movie]{duration}{\mkbibemph{#1}}
 %\DeclareFieldFormat{url}{\underline{\url{#1}}}
 \urlstyle{rm}
 %%%
@@ -47,6 +48,17 @@
   \ifthenelse{\value{listcount}<\value{liststop}}
     {\addcomma\space}
     {}}
+
+%%%%% Only available in Biblatex v2.0 or higher
+% \DeclareSourcemap{
+%     \maps[datatype=bibtex]{
+%       \map{
+%         \step[fieldsource=duration]
+%         \step[fieldset=usera,origfieldval]
+%     }
+%   }
+% }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%          DRIVERS           %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -223,9 +235,6 @@
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{title}%
   \newunit
-  %\printfield{duration}
-  \usebibmacro{duration}%
-  \newunit
   \printlist{language}%
   \newunit\newblock
   \printfield{note}%
@@ -233,6 +242,8 @@
   \printfield{type}%
   \newunit\newblock
   \usebibmacro{publisher+location+date}%
+  \newunit
+  \usebibmacro{duration}%
   \usebibmacro{finentry}%
 }%
 
@@ -281,7 +292,6 @@
   \iffieldundef{duration}{}
   {\printtext[parens]{\printfield{duration}}}
   \newunit}
-
 
 \renewbibmacro*{byeditor}{%
     \ifnameundef{editor}

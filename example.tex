@@ -5,7 +5,11 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{luainputenc}
 
-
+\usepackage[french]{babel}
+\addto\extrasfrench{
+  \providecommand{\og}{\leavevmode\flqq~}
+  \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}
+}
 
 \usepackage[unicode=true,
  bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
@@ -23,7 +27,7 @@ alldates=long,%
 useprefix=true,%
 backend=biber]{biblatex}
 
-\bibliography{biblio_these}
+\bibliography{example_biblio}
 \setlength{\bibitemsep}{2ex}
 \DeclareLanguageMapping{french}{francais}
 
@@ -41,12 +45,14 @@ backend=biber]{biblatex}
 
 
 \begin{document}
-
 \title{Bibliographie}
+
 
 \maketitle
 \nocite{*}
-\printbibliography
+
+\printbibliography[type=movie, title=Filmographie]
+\printbibliography[nottype=movie, title=Bibliographie]
 
 
 \end{document}
