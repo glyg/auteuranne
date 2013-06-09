@@ -1,9 +1,9 @@
 %%%%% Document minimal pour imprimer la bibiographie avec biblatex
 
 \documentclass[12pt,oneside,french]{book}
-\usepackage{helvet}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{luainputenc}
+
+\usepackage{fontspec}
+% \setmainfont{}
 
 \usepackage[french]{babel}
 \addto\extrasfrench{
@@ -11,13 +11,24 @@
   \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}
 }
 
-\usepackage[unicode=true,
- bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
- breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
- {hyperref}
-\hypersetup{pdftitle={Example},
- pdfauthor={John Author}}
+\usepackage[unicode,
+            pdfencoding=auto,
+            bookmarks=true,
+            bookmarksnumbered=false,
+            bookmarksopen=false,
+            breaklinks=false,
+            pdfborder={0 0 0},
+            backref=false,
+            colorlinks=false]
+            {hyperref}
 
+\hypersetup{
+     pdfinfo={
+        Title={Bibliographie seule},
+        Subject={Test},
+        Author={Jeanne Drouet},
+             }
+           }
 
 \usepackage[citestyle=auteurannee_colon,%
 bibstyle=auteurannee,%

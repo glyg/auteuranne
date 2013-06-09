@@ -1,0 +1,41 @@
+% $Id: francais.lbx,v 0.1 2011/11/16 guillaume $
+
+\ProvidesFile{francais.lbx}
+\InheritBibliographyExtras{french}
+\DeclareBibliographyExtras{%
+  \protected\def\bibrangedash{%
+    -\penalty\hyphenpenalty}% breakable dash
+}
+\DeclareBibliographyStrings{%
+  bibliography     = {{Bibliographie}{Bibliographie}},
+  references       = {{R\'ef\'erences}{R\'ef\'erences}},
+  shorthands       = {{Liste des sigles}{Sigles}},
+  % editor           = {{\'editeur}{\'ed\adddot}},
+  % editors          = {{\'editeurs}{\'eds\adddot}},
+  editor           = {{\'editeur}{dir\adddot}},
+  editors          = {{\'editeurs}{dir\adddot}},
+  % in               = {{dans}{dans}},
+  in               = {{in}{in}},
+%  inseries         = {{dans}{dans}},
+  inseries         = {{in}{in}},
+  volume           = {{volume}{vol\adddot}},
+  volumes          = {{volumes}{vol\adddot}},
+  mathesis         = {{}{}},
+  urlseen          = {{consult\'e le}{consult\'e le}},
+  january          = {{janvier}{janvier}},
+  february         = {{f\'evrier}{f\'evrier}},
+  march            = {{mars}{mars}},
+  april            = {{avril}{avril}},
+  may              = {{mai}{mai}},
+  june             = {{juin}{juin}},
+  july             = {{juillet}{juillet}},
+  august           = {{ao\^ut}{ao\^ut}},
+  september        = {{septembre}{septembre}},
+  october          = {{octobre}{octobre}},
+  november         = {{novembre}{novembre}},
+  december         = {{d\'ecembre}{d\'ecembre}},
+  editorstr        = {{dir.}{dir.}},		
+  techreport       = {{rapport technique}{}},
+}
+
+\endinput
